@@ -1,0 +1,7 @@
+regexp: "xyz$"
+ast:
+  type: match
+  body:
+    - type: literal
+      text: xyz
+    - type: end

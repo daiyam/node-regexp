@@ -1,0 +1,12 @@
+regexp: "(?<!y)x"
+ast:
+  type: match
+  body:
+    - type: negative-lookbehind
+      body:
+        type: match
+        body:
+          - type: literal
+            text: y
+    - type: literal
+      text: x

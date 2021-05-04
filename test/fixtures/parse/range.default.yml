@@ -1,0 +1,21 @@
+regexp: "[a-z]+"
+ast:
+  type: match
+  body:
+    - type: quantified
+      body:
+        type: charset
+        body:
+          - type: range
+            begin:
+              type: literal
+              text: a
+            end:
+              type: literal
+              text: z
+        negated: false
+      quantifier:
+        type: quantifier
+        min: 1
+        max: .inf
+        greedy: true

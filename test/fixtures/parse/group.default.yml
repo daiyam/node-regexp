@@ -1,0 +1,28 @@
+regexp: "(a)(b)(?:c)(d)"
+ast:
+  type: match
+  body:
+    - type: capture-group
+      body:
+        type: match
+        body:
+          - type: literal
+            text: a
+    - type: capture-group
+      body:
+        type: match
+        body:
+          - type: literal
+            text: b
+    - type: non-capture-group
+      body:
+        type: match
+        body:
+          - type: literal
+            text: c
+    - type: capture-group
+      body:
+        type: match
+        body:
+          - type: literal
+            text: d

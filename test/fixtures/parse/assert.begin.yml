@@ -1,0 +1,7 @@
+regexp: "^abc"
+ast:
+  type: match
+  body:
+    - type: begin
+    - type: literal
+      text: abc

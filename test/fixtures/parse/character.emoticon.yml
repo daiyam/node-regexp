@@ -1,0 +1,14 @@
+regexp: "[\\u1F600-\\u1F64F]"
+ast:
+  type: match
+  body:
+    - type: charset
+      body:
+        - type: range
+          begin:
+            type: utf-16
+            code: 1F600
+          end:
+            type: utf-16
+            code: 1F64F
+      negated: false

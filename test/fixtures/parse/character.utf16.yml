@@ -1,0 +1,6 @@
+regexp: "\\u1Af"
+ast:
+  type: match
+  body:
+    - type: utf-16
+      code: 1Af

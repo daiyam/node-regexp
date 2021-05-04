@@ -1,0 +1,11 @@
+regexp: "\\n\\b[\\-]"
+ast:
+  type: match
+  body:
+    - type: line-feed
+    - type: word-boundary
+    - type: charset
+      body:
+        - type: escape
+          code: "-"
+      negated: false

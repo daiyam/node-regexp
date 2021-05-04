@@ -1,0 +1,6 @@
+regexp: "again and again"
+ast:
+  type: match
+  body:
+    - type: literal
+      text: again and again

@@ -1,0 +1,6 @@
+regexp: "\\p{Emoji_Presentation}"
+ast:
+  type: match
+  body:
+    - type: unicode-property
+      property: Emoji_Presentation

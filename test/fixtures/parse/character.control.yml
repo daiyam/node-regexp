@@ -1,0 +1,6 @@
+regexp: "\\cm"
+ast:
+  type: match
+  body:
+    - type: control
+      code: m

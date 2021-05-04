@@ -1,0 +1,20 @@
+regexp: "(?i:saturday|sunday)"
+ast:
+  type: match
+  body:
+    - type: modified-group
+      modifiers:
+        positive:
+          - i
+        negative: []
+      body:
+        type: alternate
+        body:
+          - type: match
+            body:
+              - type: literal
+                text: saturday
+          - type: match
+            body:
+              - type: literal
+                text: sunday

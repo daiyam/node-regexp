@@ -1,0 +1,3 @@
+source: "(?i:saturday|sunday)"
+target: "es2018"
+result: "[Ss][Aa][Tt][Uu][Rr][Dd][Aa][Yy]|[Ss][Uu][Nn][Dd][Aa][Yy]"

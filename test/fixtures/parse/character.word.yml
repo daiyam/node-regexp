@@ -1,0 +1,20 @@
+regexp: "\\b[aA]\\w+"
+ast:
+  type: match
+  body:
+    - type: word-boundary
+    - type: charset
+      body:
+        - type: literal
+          text: a
+        - type: literal
+          text: A
+      negated: false
+    - type: quantified
+      body:
+        type: word
+      quantifier:
+        type: quantifier
+        min: 1
+        max: .inf
+        greedy: true

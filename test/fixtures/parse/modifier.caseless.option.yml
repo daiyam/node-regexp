@@ -1,0 +1,18 @@
+regexp: "a (?i)c(?-i)at"
+ast:
+  type: match
+  body:
+    - type: literal
+      text: "a "
+    - type: modifier
+      positive:
+        - i
+      negative: []
+    - type: literal
+      text: c
+    - type: modifier
+      positive: []
+      negative:
+        - i
+    - type: literal
+      text: at

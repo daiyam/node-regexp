@@ -1,0 +1,47 @@
+{
+	"name": "@daiyam/regexp",
+	"description": "RegExp parser/formatter/visitor/transformer",
+	"version": "0.1.0",
+	"homepage": "https://github.com/daiyam/node-regexp",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/daiyam/node-regexp.git"
+	},
+	"bugs": {
+		"url": "https://github.com/daiyam/node-regexp/issues"
+	},
+	"author": {
+		"name": "Baptiste Augrain",
+		"email": "daiyam@zokugun.org"
+	},
+	"license": "MIT",
+	"main": "./src/index",
+	"scripts": {
+		"build": "node scripts/compile.js",
+		"test": "mocha --colors --check-leaks --reporter spec test/*.js"
+	},
+	"devDependencies": {
+		"chai": "^4.3.4",
+		"klaw-sync": "^6.0.0",
+		"mocha": "^8.3.2",
+		"pegjs": "^0.10.0",
+		"yaml": "^1.10.2"
+	},
+	"keywords": [
+		"regular expression",
+		"regexp",
+		"regex",
+		"ast",
+		"parser",
+		"parse",
+		"formatter",
+		"stringify",
+		"visitor",
+		"visit",
+		"transformer",
+		"transform",
+		"translator",
+		"translate",
+		"ES2018"
+	]
+}

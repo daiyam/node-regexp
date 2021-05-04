@@ -1,0 +1,13 @@
+regexp: "\\P{Script_Extensions=Latin}+"
+ast:
+  type: match
+  body:
+    - type: quantified
+      body:
+        type: non-unicode-property
+        property: Script_Extensions=Latin
+      quantifier:
+        type: quantifier
+        min: 1
+        max: .inf
+        greedy: true

@@ -1,0 +1,6 @@
+regexp: "\\u{0021}"
+ast:
+  type: match
+  body:
+    - type: unicode
+      code: "0021"

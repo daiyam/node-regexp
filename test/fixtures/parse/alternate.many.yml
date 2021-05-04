@@ -1,0 +1,33 @@
+regexp: "a|bc*|c|d|e"
+ast:
+  type: alternate
+  body:
+    - type: match
+      body:
+        - type: literal
+          text: a
+    - type: match
+      body:
+        - type: literal
+          text: b
+        - type: quantified
+          body:
+            type: literal
+            text: c
+          quantifier:
+            type: quantifier
+            min: 0
+            max: .inf
+            greedy: true
+    - type: match
+      body:
+        - type: literal
+          text: c
+    - type: match
+      body:
+        - type: literal
+          text: d
+    - type: match
+      body:
+        - type: literal
+          text: e

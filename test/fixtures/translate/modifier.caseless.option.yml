@@ -1,0 +1,3 @@
+source: "a (?i)c(?-i)at"
+target: "es2018"
+result: "a [Cc]at"

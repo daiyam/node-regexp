@@ -1,0 +1,34 @@
+regexp: "First_Name: (?<firstname>\\w+), Last_Name: (?<lastname>\\w+)"
+ast:
+  type: match
+  body:
+    - type: literal
+      text: "First_Name: "
+    - type: named-group
+      name: firstname
+      body:
+        type: match
+        body:
+          - type: quantified
+            body:
+              type: word
+            quantifier:
+              type: quantifier
+              min: 1
+              max: .inf
+              greedy: true
+    - type: literal
+      text: ", Last_Name: "
+    - type: named-group
+      name: lastname
+      body:
+        type: match
+        body:
+          - type: quantified
+            body:
+              type: word
+            quantifier:
+              type: quantifier
+              min: 1
+              max: .inf
+              greedy: true

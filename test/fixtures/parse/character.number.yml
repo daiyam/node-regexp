@@ -1,0 +1,14 @@
+regexp: "\\b\\d{4}\\b"
+ast:
+  type: match
+  body:
+    - type: word-boundary
+    - type: quantified
+      body:
+        type: digit
+      quantifier:
+        type: quantifier
+        min: 4
+        max: 4
+        greedy: true
+    - type: word-boundary
