@@ -41,16 +41,16 @@ export declare enum TokenType {
 	WHITE_SPACE,
 	WORD,
 	WORD_BOUNDARY
-};
+}
 
 export declare enum TranslationTarget {
 	ES2018
-};
+}
 
 export declare interface Token {
 	type: TokenType,
 	body?: Token | Token[]
-};
+}
 
 declare type Visitor = (token: Token) => void;
 declare type Transformer = (token: Token, parent: Token | null, key: string | null, index: number | null) => void;
