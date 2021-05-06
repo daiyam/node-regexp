@@ -1,0 +1,3 @@
+source: "(?i)[a-f]+"
+target: "es2018"
+result: "[A-Fa-f]+"

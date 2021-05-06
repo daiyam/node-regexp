@@ -1,0 +1,3 @@
+source: "(?i)[_]+"
+target: "es2018"
+result: "[_]+"

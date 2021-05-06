@@ -42,6 +42,11 @@ function transformFunc(tokens, parent, key, callback) {
 				}
 
 				notSkipped = false
+			},
+			transform(tokens, parent, key) {
+				transformFunc(tokens, parent, key, callback)
+
+				notSkipped = false
 			}
 		}
 
@@ -56,6 +61,44 @@ function transformFunc(tokens, parent, key, callback) {
 			else {
 				notSkipped = true
 			}
+		}
+	}
+	else if(parent) {
+		let notSkipped = true
+
+		const that = {
+			remove() {
+				delete parent[key]
+
+				notSkipped = false
+			},
+			replace(token, transform) {
+				if(typeof token === 'string') {
+					token = parse(token).body
+				}
+
+				parent[key] = token
+
+				if(transform) {
+					transformFunc(token, parent, key, callback)
+				}
+
+				notSkipped = false
+			},
+			transform(tokens, parent, key) {
+				transformFunc(tokens, parent, key, callback)
+
+				notSkipped = false
+			}
+		}
+
+		callback.call(that, tokens, parent, key, null)
+
+		if(notSkipped) {
+			tokens.body && transformFunc(tokens.body, tokens, 'body', callback)
+		}
+		else {
+			notSkipped = true
 		}
 	}
 	else {

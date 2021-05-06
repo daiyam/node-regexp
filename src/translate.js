@@ -18,16 +18,49 @@ function translate(value, target) {
 
 function translateES2018(ast) {
 	let caseless = false
+	let inCharset = false
+	let sets = null
 
 	transform(ast, {
+		[TokenType.CHARSET](token) {
+			inCharset = true
+			sets = {}
+
+			this.transform(token.body, token, 'body')
+
+			inCharset = false
+		},
 		[TokenType.LITERAL](token) {
 			if(caseless) {
 				let text = '';
+				let upper, lower, upperLower
+
 				for(const c of token.text.split('')) {
-					text += `[${c.toUpperCase()}${c.toLowerCase()}]`
+					upper = c.toUpperCase()
+					lower = c.toLowerCase()
+
+					if(upper === lower) {
+						text += upper
+					}
+					else {
+						upperLower = `${upper}${lower}`
+
+						if(inCharset) {
+							if(!sets[upperLower]) {
+								sets[upperLower] = true
+
+								text += upperLower
+							}
+						}
+						else {
+							text += `[${upperLower}]`
+						}
+					}
 				}
 
-				this.replace(text)
+				if(token.text !== text) {
+					this.replace(text)
+				}
 			}
 		},
 		[TokenType.MODIFIED_GROUP](token) {
@@ -38,7 +71,10 @@ function translateES2018(ast) {
 				caseless = false
 			}
 
-			this.replace(token.body, true)
+			this.replace({
+				type: TokenType.NON_CAPTURE_GROUP,
+				body: token.body
+			}, true)
 		},
 		[TokenType.MODIFIER](token) {
 			if(token.positive.includes('i')) {
@@ -65,7 +101,16 @@ function translateES2018(ast) {
 				}
 
 				if(beginUpper && endUpper && beginUpper !== beginLower && (beginUpper.charCodeAt(0) - endUpper.charCodeAt(0)) === (beginLower.charCodeAt(0) - endLower.charCodeAt(0))) {
-					this.replace(`${beginUpper}-${endUpper}${beginLower}-${endLower}`)
+					const range = `${beginUpper}-${endUpper}${beginLower}-${endLower}`
+
+					if(sets[range]) {
+						this.remove()
+					}
+					else {
+						sets[range] = true
+
+						this.replace(range)
+					}
 				}
 			}
 		}
