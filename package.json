@@ -1,7 +1,7 @@
 {
 	"name": "@daiyam/regexp",
 	"description": "RegExp parser/formatter/visitor/transformer",
-	"version": "0.1.2",
+	"version": "0.1.3",
 	"homepage": "https://github.com/daiyam/node-regexp",
 	"repository": {
 		"type": "git",
@@ -42,6 +42,6 @@
 		"transform",
 		"translator",
 		"translate",
-		"ES2018"
+		"es2018"
 	]
 }
