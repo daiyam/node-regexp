@@ -42,6 +42,8 @@
 		"transform",
 		"translator",
 		"translate",
-		"es2018"
+		"es2018",
+		"pcre",
+		"pcre2"
 	]
 }

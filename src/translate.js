@@ -1,18 +1,44 @@
 const { TokenType } = require('./type.js')
-const { parse } = require('../lib/parser')
+const { isRegExp } = require('./isRegExp.js')
+const { parse } = require('./parse.js')
 const { stringify } = require('./stringify.js')
 const { transform } = require('./transform.js')
 
-const TranslationTarget = {
+const Flavor = {
 	ES2018: 'es2018'
 }
 
-function translate(value, target) {
-	if(target === TranslationTarget.ES2018) {
-		return stringify(translateES2018(parse(value)))
+const Translators = {
+	[Flavor.ES2018]: translateES2018
+}
+
+function translate(value, target, toString = true) {
+	const translator = Translators[target]
+	if(!translator) {
+		return value
+	}
+
+	let result
+
+	if(Array.isArray(value)) {
+		result = []
+
+		for(const token of value) {
+			result.push(translator(token))
+		}
+	}
+	else if(isRegExp(value) || typeof value === 'string') {
+		result = translator(parse(value))
 	}
 	else {
-		return value
+		result = translator(value)
+	}
+
+	if(toString) {
+		return stringify(result)
+	}
+	else {
+		return result
 	}
 }
 
@@ -120,6 +146,6 @@ function translateES2018(ast) {
 }
 
 module.exports = {
-	TranslationTarget,
+	Flavor,
 	translate
 }

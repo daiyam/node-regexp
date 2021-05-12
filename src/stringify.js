@@ -1,14 +1,18 @@
 const { TokenType } = require('./type.js')
+const { isRegExp } = require('./isRegExp.js')
 
 function stringify(tokens) {
 	if(Array.isArray(tokens)) {
 		let result = ''
 
 		for(const token of tokens) {
-			result = toString(token, result)
+			result += stringify(token)
 		}
 
 		return result
+	}
+	else if(isRegExp(tokens)) {
+		return tokens.toString()
 	}
 	else if(tokens) {
 		return toString(tokens, '')

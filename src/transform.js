@@ -1,4 +1,4 @@
-const { parse } = require('../lib/parser')
+const { parse } = require('./parse.js')
 
 function transform(tokens, callback) {
 	if(typeof callback === 'function') {
@@ -92,7 +92,7 @@ function transformFunc(tokens, parent, key, callback) {
 			}
 		}
 
-		callback.call(that, tokens, parent, key, null)
+		callback.call(that, tokens, parent, key)
 
 		if(notSkipped) {
 			tokens.body && transformFunc(tokens.body, tokens, 'body', callback)
@@ -102,14 +102,14 @@ function transformFunc(tokens, parent, key, callback) {
 		}
 	}
 	else {
-		callback.call(null, tokens, parent, key, null)
+		callback.call(null, tokens)
 
 		tokens.body && transformFunc(tokens.body, tokens, 'body', callback)
 	}
 }
 
 function transformMap(tokens, callbackMap) {
-	transform(tokens, function(token, parent, key, index) {
+	transformFunc(tokens, null, null, function(token, parent, key, index) {
 		if(callbackMap[token.type]) {
 			callbackMap[token.type].call(this, token, parent, key, index)
 		}

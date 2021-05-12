@@ -43,7 +43,7 @@ export declare enum TokenType {
 	WORD_BOUNDARY
 }
 
-export declare enum TranslationTarget {
+export declare enum Flavor {
 	ES2018
 }
 
@@ -58,8 +58,8 @@ declare type Transformer = (token: Token, parent: Token | null, key: string | nu
 export declare const escape: (value: string) => string;
 export declare const isRegExp: (value: any) => boolean;
 export declare const parse: (value: string | RegExp) => Token;
-export declare const stringify: (tokens?: Token | Token[]) => string;
+export declare const stringify: (tokens?: Token | Token[] | RegExp) => string;
 export declare const visit: (tokens?: Token | Token[], callback?: { [TokenType: string]: Visitor } | Visitor) => void;
 export declare const transform: (tokens?: Token | Token[], callback?: { [TokenType: string]: Transformer } | Transformer) =>
 void;
-export declare const translate: (value: string, target: TranslationTarget) => string;
+export declare const translate: (value: string | RegExp | Token | Token[], target: Flavor, toString?: boolean) => string | Token | Token[];
