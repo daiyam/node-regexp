@@ -44,10 +44,10 @@ The library is supporting ES2018 syntax and some elements of PCRE2 syntax.
 | ---------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
 | `\`, `.`, `\cX`, `\d`, `\D`, `\f`, `\n`, `\r`, `\s`, `\S`, `\t`, `\v`, `\w`, `\W`, `\0`, `\xhh`, `\uhhhh`, `\uhhhhh`, `[\b]` | [Character classes (MDN)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Character_Classes)              |
 | `^`, `$`, `x(?=y)`, `x(?!y)`, `(?<=y)x`, `(?<!y)x`, `\b`, `\B`                                                               | [Assertions (MDN)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Assertions)                            |
-| `(x)`, `(?:x)`, `(?<Name>x)`, `x|y`, `[xyz]`, `[^xyz]`, `\Number`                                                            | [Groups and ranges (MDN)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Groups_and_Ranges)              |
+| `(x)`, `(?:x)`, `(?<Name>x)`, `x\|y`, `[xyz]`, `[^xyz]`, `\Number`                                                           | [Groups and ranges (MDN)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Groups_and_Ranges)              |
 | `*`, `+`, `?`, `x{n}`, `x{n,}`, `x{n,m}`                                                                                     | [Quantifiers (MDN)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Quantifiers)                          |
 | `\p{UnicodeProperty}`, `\P{UnicodeProperty}`                                                                                 | [Unicode property escapes (MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Unicode_Property_Escapes) |
-| `(?imsxUJX-imsxUJX)`, `(?i:)`                                                                                                | [Option Setting (PCRE)](https://mariadb.com/kb/en/pcre/#option-setting)                                                                     |
+| `(?imsxUJX-imsxUJX)x`, `(?i:x)y`                                                                                             | [Option Setting (PCRE)](https://mariadb.com/kb/en/pcre/#option-setting)                                                                     |
 
 API
 ---
