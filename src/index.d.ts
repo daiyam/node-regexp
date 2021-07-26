@@ -55,11 +55,11 @@ export declare interface Token {
 declare type Visitor = (token: Token) => void;
 declare type Transformer = (token: Token, parent: Token | null, key: string | null, index: number | null) => void;
 
-export declare const escape: (value: string) => string;
-export declare const isRegExp: (value: any) => boolean;
-export declare const parse: (value: string | RegExp) => Token;
-export declare const stringify: (tokens?: Token | Token[] | RegExp) => string;
-export declare const visit: (tokens?: Token | Token[], callback?: { [TokenType: string]: Visitor } | Visitor) => void;
-export declare const transform: (tokens?: Token | Token[], callback?: { [TokenType: string]: Transformer } | Transformer) =>
-void;
-export declare const translate: (value: string | RegExp | Token | Token[], target: Flavor, toString?: boolean) => string | Token | Token[];
+export function escape(value: string): string;
+export function isRegExp(value: any): boolean;
+export function parse(value: string | RegExp): Token;
+export function stringify(tokens?: Token | Token[] | RegExp): string;
+export function visit(tokens?: Token | Token[], callback?: { [TokenType: string]: Visitor } | Visitor): void;
+export function transform(tokens?: Token | Token[], callback?: { [TokenType: string]: Transformer } | Transformer): void;
+export function translate(value: string | RegExp | Token | Token[], target: Flavor): string;
+export function translate(value: string | RegExp | Token | Token[], target: Flavor, toString: boolean): string | Token | Token[];

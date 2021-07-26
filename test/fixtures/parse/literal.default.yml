@@ -1,0 +1,19 @@
+regexp: "/ab+c/"
+ast:
+  type: pattern
+  body:
+    type: match
+    body:
+      - type: literal
+        text: a
+      - type: quantified
+        body:
+          type: literal
+          text: b
+        quantifier:
+          type: quantifier
+          min: 1
+          max: .inf
+          greedy: true
+      - type: literal
+        text: c

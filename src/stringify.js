@@ -174,6 +174,15 @@ function toString(value, result) {
 	else if(value.type === TokenType.OCTAL) { // {{{
 		result += `\\0${value.code}`
 	} // }}}
+	else if(value.type === TokenType.PATTERN) { // {{{
+		result += '/'
+		result = toString(value.body, result)
+		result += '/'
+
+		if(value.modifiers) {
+			result += value.modifiers.positive.join('')
+		}
+	} // }}}
 	else if(value.type === TokenType.POSITIVE_LOOKAHEAD) { // {{{
 		result += '(?='
 

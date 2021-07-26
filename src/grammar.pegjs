@@ -2,7 +2,9 @@
 	const { TokenType } = require('../src/type.js')
 }
 
-regexp		= match:match alternate:("|" regexp)? {
+regexp		= patternMod / pattern
+
+pattern		= match:match alternate:("|" pattern)? {
 	if(alternate) {
 		const body = alternate[1].type === TokenType.ALTERNATE ? [match, ...alternate[1].body] : [match, alternate[1]]
 
@@ -10,6 +12,15 @@ regexp		= match:match alternate:("|" regexp)? {
 	}
 	else {
 		return match
+	}
+}
+
+patternMod	= "/" body:pattern "/" modifiers:modifierPositive? {
+	if(modifiers) {
+		return { type: TokenType.PATTERN, body: body, modifiers: modifiers }
+	}
+	else {
+		return { type: TokenType.PATTERN, body: body }
 	}
 }
 
@@ -40,9 +51,9 @@ end			= "$" { return { type: TokenType.END } }
 
 modifier 		= "?" modifiers:modifierSpec { return { type: TokenType.MODIFIER, ...modifiers } }
 modifierSpec	= (modifierPositiveNegative / modifierPositive / modifierNegative)
-modifierPositiveNegative	= positive:[imsxUJX]+ "-" negative:[imsxUJX]+		{ return { positive: positive, negative: negative } }
-modifierPositive			= positive:[imsxUJX]+								{ return { positive: positive, negative: [] } }
-modifierNegative			= "-" negative:[imsxUJX]+							{ return { positive: [], negative: negative } }
+modifierPositiveNegative	= positive:[gimsuxyUJX]+ "-" negative:[gimsuxyUJX]+		{ return { positive: positive, negative: negative } }
+modifierPositive			= positive:[gimsuxyUJX]+								{ return { positive: positive, negative: [] } }
+modifierNegative			= "-" negative:[gimsuxyUJX]+							{ return { positive: [], negative: negative } }
 
 quantified	= submatch:submatch quantifier:quantifier {
 	if(submatch.type === TokenType.LITERAL && submatch.text.length > 1) {

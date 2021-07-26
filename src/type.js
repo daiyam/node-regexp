@@ -30,6 +30,7 @@ const TokenType = {
 	NON_WORD_BOUNDARY: 'non-word-boundary',
 	NUL: 'nul',
 	OCTAL: 'octal',
+	PATTERN: 'pattern',
 	POSITIVE_LOOKAHEAD: 'positive-lookahead',
 	POSITIVE_LOOKBEHIND: 'positive-lookbehind',
 	QUANTIFIED: 'quantified',
