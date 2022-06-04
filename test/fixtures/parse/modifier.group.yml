@@ -1,0 +1,20 @@
+regexp: "(?i)c(?-i:at)"
+ast:
+  type: match
+  body:
+    - type: modifier
+      positive:
+        - i
+      negative: []
+    - type: literal
+      text: c
+    - type: modified-group
+      modifiers:
+        positive: []
+        negative:
+          - i
+      body:
+        type: match
+        body:
+          - type: literal
+            text: at
