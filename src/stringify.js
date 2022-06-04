@@ -102,7 +102,7 @@ function toString(value, result) {
 		result += value.modifiers.positive.join('')
 
 		if(value.modifiers.negative.length) {
-			result += `-${value.negative.join('')}`
+			result += `-${value.modifiers.negative.join('')}`
 		}
 
 		result += ':'
